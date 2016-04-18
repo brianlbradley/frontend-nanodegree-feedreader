@@ -27,129 +27,107 @@ $(function() {
         });
 
 
-        /* TODO: Write a test that loops through each feed
+        /* A test that loops through each feed
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
-         //expected undefined to be defined when url is missing
+
         it('Expect Url to be defined', function() {
             for (var i =0; i < allFeeds.length; i++) {
             expect(allFeeds[i].url).toBeDefined();
-            expect(allFeeds[i].url.length).not.toBeNull();
+            expect(allFeeds[i].url.length).not.toBe(0);
+
            }
         });
 
-
-        /* TODO: Write a test that loops through each feed
+        /* A test that loops through each feed
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
 
-          it('Expect Name to be defined', function() {
+        it('Expect Name to be defined', function() {
             for (var i =0; i < allFeeds.length; i++) {
             expect(allFeeds[i].name).toBeDefined();
-            expect(allFeeds[i].name.length).not.toBeNull();
+            expect(allFeeds[i].name.length).not.toBe(0);
            }
-       });
-
-    });
-
-
-    /* TODO: Write a new test suite named "The menu" */
-
-        describe('The Menu', function() {
+        });
+     });
 
 
+    /* A new test suite named "The menu" */
 
-        /* TODO: Write a test that ensures the menu element is
+    describe('The Menu', function() {
+        /* Write a test that ensures the menu element is
          * hidden by default. You'll have to analyze the HTML and
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
 
-          it('menu element is hidden by default', function() {
-            expect($('body').hasClass('menu-hidden')).toBe(true)
+        it('menu element is hidden by default', function() {
+            expect($('body').hasClass('menu-hidden')).toBe(true);
           });
 
-
-
-         /* TODO: Write a test that ensures the menu changes
+         /* A test that ensures the menu changes
           * visibility when the menu icon is clicked. This test
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
-       // A portional credit  https://discussions.udacity.com/t/testing-if-menu-is-visible-hidden-after-menu-icon-is-clicked/10175
-           it('shows and hides visibility when icon is clicked', function() {
+         // Guide: https://discussions.udacity.com/t/testing-if-menu-is-visible-hidden-after-menu-icon-is-clicked/10175
+        it('shows and hides visibility when icon is clicked', function() {
               var icon= $('.menu-icon-link');
-
-                expect($('body').hasClass('menu-hidden')).toBe(true);
                  icon.click();
                  expect($('body').hasClass('menu-hidden')).toBe(false);
                  icon.click();
                  expect($('body').hasClass('menu-hidden')).toBe(true);
-          })
+          });
+      });
 
-      })
-    /* TODO: Write a new test suite named "Initial Entries" */
+         /* A new test suite named "Initial Entries" */
     describe('Initial Entries', function() {
 
-        /* TODO: Write a test that ensures when the loadFeed
+        /* A test that ensures when the loadFeed
          * function is called and completes its work, there is at least
          * a single .entry element within the .feed container.
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
 
-        //signals when done
+
         beforeEach(function(done) {
-             loadFeed(0,done);
-
-
+            loadFeed(0,done);
             });
 
+        it('a single element in the feed container', function(){
+               var feedLoaded = $('.entry').length;
+               expect(feedLoaded).not.toBeLessThan(1);
+          });
+      });
 
-        it('a single element in the feed container', function(done){
-             var feedLoaded = $('.entry').length;
-             expect(feedLoaded).not.toBeLessThan(1);
-            //signals to the framework that it's done
-                done();
+         /* A new test suite named "New Feed Selection"
+         /*  A test that ensures when a new feed is loaded
+          * by the loadFeed function that the content actually changes.
+          * Remember, loadFeed() is asynchronous.
+          */
 
-        });
-     });
+          // Help with this:  https://discussions.udacity.com/t/step-16-write-a-test-that-ensures-when-a-new-feed-is-loaded-by-the-loadfeed-function-that-the-content-actually-changes/20810/5
+    describe('New Feed Selection', function(){
+        beforeEach(function(done) {
+            $('.feed').empty();
+            loadFeed(1,function() {
+                first = $('.feed').find('h2').text();
+                loadFeed(2,done);
+          });
+      });
 
-    /* TODO: Write a new test suite named "New Feed Selection"
-
-        /* TODO: Write a test that ensures when a new feed is loaded
-         * by the loadFeed function that the content actually changes.
-         * Remember, loadFeed() is asynchronous.
-         */
-
-      // Help with this:  https://discussions.udacity.com/t/step-16-write-a-test-that-ensures-when-a-new-feed-is-loaded-by-the-loadfeed-function-that-the-content-actually-changes/20810/5
-         describe('New Feed Selection', function(){
-
-            // current load not equal to future load title?
-
-            beforeEach(function(done) {
-                $('.feed').empty();
-
-                loadFeed(1,function() {
-                    // findiing title
-                    first = $('.feed').find('h2').text();
-                    loadFeed(2,done);
-                });
-            });
-
-          it('content changes when new feeds load', function(done) {
-
+        it('content changes when new feeds load', function() {
             expect($('.feed').find('h2').text()).not.toBe(first);
-            done();
-          })
+          });
 
-       afterAll(function(done) {
+
+    afterAll(function(done) {
             loadFeed(0, done);
-
         });
-      })
+      });
 }());
 
 

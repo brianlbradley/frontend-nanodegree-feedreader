@@ -23,8 +23,8 @@ You will learn how to use Jasmine to write a number of tests against a pre-exist
 
 # How to view this project?
 
-  Open the index.html file in the Jasmine folder.  The test descriptions and results are at the bottom of the page past the links.
-    These tests are written in feedreader.js and validating items in the the app.js file and index.html
+  Open the index.html file.  The test descriptions and results are at the bottom of the page past the links.
+    These tests are written in spec/feedreader.js and validating items in the the js/app.js file and index.html
     
 The following are the various tests performed:
 

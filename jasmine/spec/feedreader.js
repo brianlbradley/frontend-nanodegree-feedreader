@@ -50,8 +50,8 @@ $(function() {
             expect(allFeeds[i].name).toBeDefined();
             expect(allFeeds[i].name.length).not.toBe(0);
            }
-        });
-     });
+          });
+        });//close suite
 
 
     /* A new test suite named "The menu" */
@@ -79,8 +79,8 @@ $(function() {
                  expect($('body').hasClass('menu-hidden')).toBe(false);
                  icon.click();
                  expect($('body').hasClass('menu-hidden')).toBe(true);
-          });
-      });
+         });
+    });
 
          /* A new test suite named "Initial Entries" */
     describe('Initial Entries', function() {
@@ -100,8 +100,8 @@ $(function() {
         it('a single element in the feed container', function(){
                var feedLoaded = $('.entry').length;
                expect(feedLoaded).not.toBeLessThan(1);
-          });
-      });
+        });
+    });
 
          /* A new test suite named "New Feed Selection"
          /*  A test that ensures when a new feed is loaded
@@ -116,18 +116,18 @@ $(function() {
             loadFeed(1,function() {
                 first = $('.feed').find('h2').text();
                 loadFeed(2,done);
-          });
-      });
+        });
+    });
 
         it('content changes when new feeds load', function() {
             expect($('.feed').find('h2').text()).not.toBe(first);
-          });
+        });
 
 
     afterAll(function(done) {
             loadFeed(0, done);
         });
-      });
+    });
 }());
 
 

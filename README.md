@@ -24,12 +24,22 @@ You will learn how to use Jasmine to write a number of tests against a pre-exist
 # How to view this project?
 
   Open the index.html file in the Jasmine folder.  The test descriptions and results are at the bottom of the page past the links.
-   These are the various tests performed.  These tests are written in feedreader.js and validating items in the the app.js file and index.html
+    These tests are written in feedreader.js and validating items in the the app.js file and index.html
+    
+The following are the various tests performed:
+
 Wrote a test that loops through each feed in the allFeeds object and ensures it has a URL defined and that the URL is not empty.
+
 Wrote a test that loops through each feed in the allFeeds object and ensures it has a name defined and that the name is not empty.
+
 Wrote a new test suite named "The menu".
+
 Wrote a test that ensures the menu element is hidden by default. You'll have to analyze the HTML and the CSS to determine how we're performing the hiding/showing of the menu element.
+
 Wrote a test that ensures the menu changes visibility when the menu icon is clicked. This test should have two expectations: does the menu display when clicked and does it hide when clicked again.
+
 Wrote a test that ensures when the loadFeed function is called and completes its work, there is at least a single .entry element within the .feed container. Remember, loadFeed() is asynchronous so this test wil require the use of Jasmine's beforeEach and asynchronous done() function.
+
 Wrote a test that ensures when a new feed is loaded by the loadFeed function that the content actually changes. Remember, loadFeed() is asynchronous.
+
 

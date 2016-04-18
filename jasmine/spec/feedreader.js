@@ -127,7 +127,7 @@ $(function() {
       // Help with this:  https://discussions.udacity.com/t/step-16-write-a-test-that-ensures-when-a-new-feed-is-loaded-by-the-loadfeed-function-that-the-content-actually-changes/20810/5
          describe('New Feed Selection', function(){
 
-            // current load not equal to future load?
+            // current load not equal to future load title?
 
             beforeEach(function(done) {
                 $('.feed').empty();
@@ -145,6 +145,10 @@ $(function() {
             done();
           })
 
+       afterAll(function(done) {
+            loadFeed(0, done);
+
+        });
       })
 }());
 

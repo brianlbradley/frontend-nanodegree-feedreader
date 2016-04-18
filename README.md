@@ -24,7 +24,7 @@ You will learn how to use Jasmine to write a number of tests against a pre-exist
 # How to view this project?
 
   Open the index.html file in the Jasmine folder.  The test descriptions and results are at the bottom of the page past the links.
-   These are the various tests performed.  These tests are written in feedreader.js and validating items inthe the app.js file and index.html
+   These are the various tests performed.  These tests are written in feedreader.js and validating items in the the app.js file and index.html
 Wrote a test that loops through each feed in the allFeeds object and ensures it has a URL defined and that the URL is not empty.
 Wrote a test that loops through each feed in the allFeeds object and ensures it has a name defined and that the name is not empty.
 Wrote a new test suite named "The menu".
